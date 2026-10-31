@@ -176,18 +176,12 @@ function blankHTML(kind) {
   const [w, h] = labelDims();
   const u = Math.min(w / 100, h / 70);
   const f = cap => `<div class="bf"><div class="bcap">${cap}</div></div>`;
-  let tag, rows;
-  if (kind === "cortador") {
-    tag = "Cortador";
-    rows = `<div class="brow two">${f("Código do corte")}${f("Cortador")}</div>
-            <div class="brow">${f("Modelo do corte")}</div>
-            <div class="brow">${f("Qtd. de peças no pacote")}</div>`;
-  } else {
-    tag = "Oficina";
-    rows = `<div class="brow two">${f("Nº do corte")}${f("SKU")}</div>
-            <div class="brow">${f("Tamanho dos pedidos")}</div>
-            <div class="brow two">${f("Qtd. peças")}${f("Oficina")}</div>`;
-  }
+  // Mesmo padrão nas duas etiquetas; só mudam a faixa preta e o último campo
+  const quem = kind === "cortador" ? "Cortador" : "Oficina";
+  const tag = quem;
+  const rows = `<div class="brow">${f("Nº do corte")}</div>
+            <div class="brow two">${f("Modelo")}${f("Tamanho das peças")}</div>
+            <div class="brow two">${f("Qtd. de peças")}${f(quem)}</div>`;
   return `<div class="label blank" style="--w:${w};--h:${h};--u:${u.toFixed(3)}"><div class="btag">${tag}</div>${rows}</div>`;
 }
 
