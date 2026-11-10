@@ -179,7 +179,7 @@ function blankHTML(kind) {
   // Mesmo padrão nas duas etiquetas; só mudam a faixa preta e o último campo
   const quem = kind === "cortador" ? "Cortador" : "Oficina";
   const tag = quem;
-  const rows = `<div class="brow">${f("Nº do corte")}</div>
+  const rows = `<div class="brow two">${f("Nº do corte")}${f("Data")}</div>
             <div class="brow two">${f("Modelo")}${f("Tamanho das peças")}</div>
             <div class="brow two">${f("Qtd. de peças")}${f(quem)}</div>`;
   return `<div class="label blank" style="--w:${w};--h:${h};--u:${u.toFixed(3)}"><div class="btag">${tag}</div>${rows}</div>`;
